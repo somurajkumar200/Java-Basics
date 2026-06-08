@@ -1,0 +1,111 @@
+import java.util.*;
+public class Main {
+    Scanner sc = new Scanner(System.in);
+    String AccountHolderName;
+    int AccountType;
+    long AccountNumber;
+    int IntialDeposite;
+    int CurrentBalance;
+    int AccountStatus;
+    void LoginInformation() {
+
+
+        //Login Information
+        System.out.println("-----------Welcome To RK Bank-----------");
+        System.out.println("1.Open");
+        System.out.println("2.Login");
+        int Choose = sc.nextInt();
+        if (Choose == 1) {
+            System.out.println("Your Account is Opened Successfully");
+        } else {
+            System.out.println("Your Account is Logged in Successfully");
+        }
+
+
+        //Account Holder Name
+        System.out.println("Enter Account Holder Name:");
+        AccountHolderName = sc.next();
+
+
+        //Account Type
+        System.out.println("Choose Account Type");
+        System.out.println("1.Savings");
+        System.out.println("2.Current");
+        AccountType = sc.nextInt();
+        if (AccountType == 1) {
+            System.out.println("It's a Savings Account");
+        } else {
+            System.out.println("It's a Current Account");
+        }
+
+
+        //Account Number and Intial Deposite
+        Random random = new Random();
+        AccountNumber = 10000000000l + random.nextLong(999999999999l);
+        if (Objects.equals(Choose,1)) {
+            System.out.println("Account Number is Generated Successfully" + AccountNumber);
+            System.out.println("Enter Intial Deposita:");
+            IntialDeposite = sc.nextInt();
+        }else{
+            System.out.println("Enter Account Number:");
+            AccountNumber = sc.nextLong();
+            IntialDeposite = 10000;
+            System.out.println("Intial Deposite:" + IntialDeposite);
+        }
+        CurrentBalance = IntialDeposite;
+
+
+        //Transation
+        System.out.println("Do you want to deposite or withdraw money or check balance from your Account?");
+        System.out.println("1.Deposite");
+        System.out.println("2.Withdraw");
+        System.out.println("3.Check Balance");
+        int Transition = sc.nextInt();
+        if (Objects.equals(Transition, 1)) {
+            System.out.println("Enter Deposite Amount:");
+            int DepositeAmount = sc.nextInt();
+            CurrentBalance = CurrentBalance + DepositeAmount;
+            System.out.println("Updated Balance:" + CurrentBalance);
+        } if(Objects.equals(Transition,2)) {
+            System.out.println("Enter Withdraw Amount:");
+            int WithdrawAmount = sc.nextInt();
+            if (CurrentBalance >= WithdrawAmount) {
+                CurrentBalance = CurrentBalance - WithdrawAmount;
+                System.out.println("Updated Balance:" + CurrentBalance);
+            } else {
+                System.out.println("Insufficient Balance");
+            }
+        }else{
+            System.out.println("Current Balance:" + CurrentBalance);
+        }
+        if(Objects.equals(Choose,"login")){
+            System.out.println("Do you want us to keep tour accoun active or De-Active it?");
+            System.out.println("Choose Account Status:");
+            System.out.println("1.Active");
+            System.out.println("2.De-Active");
+            int AccountStatus = sc.nextInt();
+            if(Objects.equals(AccountStatus,1)){
+                System.out.println("Your Account is Till Active");
+            }else{
+                System.out.println("Your Account is De-Active Now");
+                System.out.println("Your Account is Closed Now");
+            }
+        }
+    }
+
+
+    //Account Holder Details
+    void Details(){
+        System.out.println("------------Account Holder Details-------------");
+        System.out.println("Account Holder Name:" + AccountHolderName);
+        System.out.println("Account Number:" + AccountNumber);
+        System.out.println("Account Type:" + (Objects.equals(AccountType,1)? "Savings" : "Current"));
+        System.out.println("Current Balance:" + CurrentBalance);
+    }
+
+    public static void main(String[] args){
+    Main RK = new Main();
+    RK.LoginInformation();
+    RK.Details();
+    }
+}
