@@ -1,0 +1,5 @@
+U1001,Rolex,9876543210,rolex@phonepe
+U1001,Raju,9494337001,raju@phonepe
+U1001,Sailaja,9676242725,sailaja@phonepe
+U1001,Raju,9100929433,raju@phonepe
+U1001,DFDF,9100929353,dfdf@phonepe
